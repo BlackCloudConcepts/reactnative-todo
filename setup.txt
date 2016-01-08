@@ -1,0 +1,29 @@
+https://devdactic.com/react-native-for-beginners/
+
+- homebrew installs
+brew install node
+brew install watchman
+
+- install react native
+npm install -g react-native-cli
+
+- *** make sure you have a recent version of node
+sudo npm install n -g
+sudo n stable
+node -v
+
+- create project
+react-native init devdactic_react —verbose
+
+[
+To run your app on iOS:
+   Open /Users/sgay/git/react/blkcld_todo/ios/blkcld_todo.xcodeproj in Xcode
+   Hit the Run button
+To run your app on Android:
+   Have an Android emulator running (quickest way to get started), or a device connected
+   cd /Users/sgay/git/react/blkcld_todo
+   react-native run-android
+]
+
+Need Xcode 7 https://github.com/facebook/react-native/issues/4794
+- This requires El Capitan OSX 10.11
