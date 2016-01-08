@@ -26,4 +26,4 @@ To run your app on Android:
 ]
 
 Need Xcode 7 https://github.com/facebook/react-native/issues/4794
-- This requires El Capitan OSX 10.11
+- This requires OSX 10.10.4
