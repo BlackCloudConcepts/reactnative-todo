@@ -1,4 +1,6 @@
 https://devdactic.com/react-native-for-beginners/
+https://devdactic.com/react-native-firebase-todo/
+https://www.youtube.com/watch?v=3ab0K6viEp0
 
 - homebrew installs
 brew install node
