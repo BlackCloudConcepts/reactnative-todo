@@ -29,3 +29,16 @@ To run your app on Android:
 
 Need Xcode 7 https://github.com/facebook/react-native/issues/4794
 - This requires OSX 10.10.4
+
+- install firebase
+npm install firebase --save
+
+*** Errors with having the wrong path to node_modules
+https://github.com/facebook/react-native/issues/3817
+https://github.com/facebook/react-native/issues/4968
+resolved with a combination of
+- rm -rf node_modules
+- watchman watch-del-all
+- node_modules/react-native/packager/packager.sh --reset-cache (may need to completely restart xcode after this one)
+- npm cache clean
+- npm install
