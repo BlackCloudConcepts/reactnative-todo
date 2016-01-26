@@ -56,3 +56,9 @@ http://stackoverflow.com/questions/29306888/react-native-on-ipad-error-could-not
 
 - folder structure and tips
 http://moduscreate.com/react_native_custom_components_ios/
+
+- examples
+https://github.com/benoitvallon/react-native-nw-react-calculator
+
+- routing
+http://www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript

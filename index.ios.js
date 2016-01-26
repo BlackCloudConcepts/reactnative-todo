@@ -16,8 +16,24 @@ class blkcld_todo extends Component {
   // Your App Code
   constructor(props) {
     super(props);
+    var _this = this;
     var myFirebaseRef = new Firebase('https://blkcldtodo.firebaseio.com/');
-    this.itemsRef = myFirebaseRef.child('items');
+
+    // !!! move me to a login screen
+    myFirebaseRef.authWithPassword({
+      email    : "blackcloudconcepts@gmail.com",
+      password : "letmein"
+    }, function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+        console.log("Authenticated successfully with payload:", authData);
+
+        _this.itemsRef = myFirebaseRef.child('items');
+
+        _this.postAuth();
+      }
+    });
 
     this.state = {
       newTodo: '',
@@ -25,9 +41,15 @@ class blkcld_todo extends Component {
     };
 
     this.items = [];
+
   }
 
   componentDidMount() {
+    // called after render is complete
+
+  }
+
+  postAuth() {
     // When a todo is added
     this.itemsRef.on('child_added', (dataSnapshot) => {
       this.items.push({id: dataSnapshot.key(), text: dataSnapshot.val()});
@@ -65,7 +87,7 @@ class blkcld_todo extends Component {
       <View style={styles.appContainer}>
         <View style={styles.titleView}>
           <Text style={styles.titleText}>
-            My Todos
+            Things
           </Text>
         </View>
         <View style={styles.inputcontainer}>
