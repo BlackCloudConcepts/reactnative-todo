@@ -42,3 +42,17 @@ resolved with a combination of
 - node_modules/react-native/packager/packager.sh --reset-cache (may need to completely restart xcode after this one)
 - npm cache clean
 - npm install
+
+_______________________________________________________________
+RESOURCES
+_______________________________________________________________
+
+- ui explorer
+http://www.reactnative.com/uiexplorer/
+
+- To run on phone
+https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/LaunchingYourApponDevices/LaunchingYourApponDevices.html
+http://stackoverflow.com/questions/29306888/react-native-on-ipad-error-could-not-connect-to-development-server (run option2 from AppDelegate)
+
+- folder structure and tips
+http://moduscreate.com/react_native_custom_components_ios/
