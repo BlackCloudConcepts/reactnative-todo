@@ -12,7 +12,12 @@ var {
 
 var Firebase = require('firebase');
 
-class blkcld_todo extends Component {
+var user = {
+  username: '',
+  password: ''
+}
+
+class blkcldList extends Component {
   // Your App Code
   constructor(props) {
     super(props);
@@ -21,8 +26,8 @@ class blkcld_todo extends Component {
 
     // !!! move me to a login screen
     myFirebaseRef.authWithPassword({
-      email    : "blackcloudconcepts@gmail.com",
-      password : "letmein"
+      email    : user.username,
+      password : user.password
     }, function(error, authData) {
       if (error) {
         console.log("Login Failed!", error);
@@ -87,7 +92,7 @@ class blkcld_todo extends Component {
       <View style={styles.appContainer}>
         <View style={styles.titleView}>
           <Text style={styles.titleText}>
-            Things
+            List
           </Text>
         </View>
         <View style={styles.inputcontainer}>
@@ -96,7 +101,7 @@ class blkcld_todo extends Component {
             style={styles.button}
             onPress={() => this.addTodo()}
             underlayColor='#dddddd'>
-            <Text style={styles.btnText}>Add!</Text>
+            <Text style={styles.btnText}>Add</Text>
           </TouchableHighlight>
         </View>
         <ListView
@@ -123,6 +128,62 @@ class blkcld_todo extends Component {
       </TouchableHighlight>
     );
   }
+}
+
+class blkcldLogin extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      username: '',
+      password: ''
+    }
+  }
+
+  login() {
+    user.username = this.state.username;
+    user.password = this.state.password;
+    this.props.navigator.push({
+      title: "List",
+      component: blkcldList,
+      passProps: {property: ''}
+    });
+  }
+
+  render() {
+    return (
+      <View style={styles.appContainer}>
+        <View style={styles.titleView}>
+          <Text style={styles.titleText}>
+            Login
+          </Text>
+        </View>
+        <View style={styles.inputcontainer}>
+          <TextInput autoCapitalize={'none'} style={styles.input} onChangeText={(text) => this.setState({username: text})} value={this.state.username}/>
+          <TextInput autoCapitalize={'none'} style={styles.input} onChangeText={(text) => this.setState({password: text})} value={this.state.password}/>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={() => this.login()}
+            underlayColor='#dddddd'>
+            <Text style={styles.btnText}>Login</Text>
+          </TouchableHighlight>
+        </View>
+      </View>
+    );
+  }
+}
+
+class blkcld_todo extends React.Component {
+ render() {
+   return (
+     <React.NavigatorIOS
+       style={styles.container}
+       initialRoute={{
+         title: 'Login',
+         component: blkcldLogin,
+       }}/>
+   );
+ }
 }
 
 var styles = StyleSheet.create({
@@ -183,6 +244,9 @@ var styles = StyleSheet.create({
   },
   todoText: {
     flex: 1,
+  },
+  container: {
+    flex: 1
   }
 });
 
