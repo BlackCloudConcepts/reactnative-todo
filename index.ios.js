@@ -17,7 +17,9 @@ var components = {};
 import blkcldLogin from './src/login.js';
 components.blkcldLogin = blkcldLogin;
 import blkcldList from './src/list.js';
-components.blkcldList = blkcldList
+components.blkcldList = blkcldList;
+import blkcldCategory from './src/category.js';
+components.blkcldCategory = blkcldCategory;
 
 var styles = StyleSheet.create({
   appContainer:{

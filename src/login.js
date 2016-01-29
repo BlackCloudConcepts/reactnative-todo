@@ -26,9 +26,18 @@ class blkcldLogin extends Component {
   login() {
     user.username = this.state.username;
     user.password = this.state.password;
+    // this.props.navigator.push({
+    //   title: "Groceries",
+    //   component: this.props.components.blkcldList,
+    //   passProps: {
+    //     components: this.props.components,
+    //     styles: this.props.styles,
+    //     user: user
+    //   }
+    // });
     this.props.navigator.push({
-      title: "Groceries",
-      component: this.props.components.blkcldList,
+      title: "Categories",
+      component: this.props.components.blkcldCategory,
       passProps: {
         components: this.props.components,
         styles: this.props.styles,

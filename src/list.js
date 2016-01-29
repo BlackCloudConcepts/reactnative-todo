@@ -30,7 +30,7 @@ class blkcldList extends Component {
       } else {
         console.log("Authenticated successfully with payload:", authData);
 
-        _this.itemsRef = myFirebaseRef.child('items');
+        _this.itemsRef = myFirebaseRef.child(_this.props.type);
 
         _this.postAuth();
       }
@@ -42,8 +42,8 @@ class blkcldList extends Component {
     };
 
     this.state = {
-      newTodo: '',
-      todoSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2})
+      newItem: '',
+      itemSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2})
     };
 
     this.items = [];
@@ -66,7 +66,7 @@ class blkcldList extends Component {
       }
       this.items.push({id: dataSnapshot.key(), text: val});
       this.setState({
-        todoSource: this.state.todoSource.cloneWithRows(this.items)
+        itemSource: this.state.itemSource.cloneWithRows(this.items)
       });
     });
 
@@ -89,10 +89,10 @@ class blkcldList extends Component {
       // - tried using this.forceUpdate()
       // - tried changing a value at the root of the object with forceUpdate and a random number above
       this.setState({
-        todoSource: this.state.todoSource.cloneWithRows([])
+        itemSource: this.state.itemSource.cloneWithRows([])
       });
       this.setState({
-        todoSource: this.state.todoSource.cloneWithRows(this.items)
+        itemSource: this.state.itemSource.cloneWithRows(this.items)
       });
       // this.forceUpdate();
     });
@@ -101,19 +101,19 @@ class blkcldList extends Component {
     this.itemsRef.on('child_removed', (dataSnapshot) => {
         this.items = this.items.filter((x) => x.id !== dataSnapshot.key());
         this.setState({
-          todoSource: this.state.todoSource.cloneWithRows(this.items)
+          itemSource: this.state.itemSource.cloneWithRows(this.items)
         });
     });
   }
 
   addTodo() {
-    if (this.state.newTodo !== '') {
+    if (this.state.newItem !== '') {
       this.itemsRef.push({
-        desc: this.state.newTodo,
+        desc: this.state.newItem,
         selected: false
       });
       this.setState({
-        newTodo : ''
+        newItem : ''
       });
     }
   }
@@ -148,7 +148,7 @@ class blkcldList extends Component {
     return (
       <View style={this.props.styles.appContainer}>
         <View style={this.props.styles.inputcontainer}>
-          <TextInput style={this.props.styles.input} onChangeText={(text) => this.setState({newTodo: text})} value={this.state.newTodo}/>
+          <TextInput style={this.props.styles.input} onChangeText={(text) => this.setState({newItem: text})} value={this.state.newItem}/>
           <TouchableHighlight
             style={this.props.styles.button}
             onPress={() => this.addTodo()}
@@ -159,7 +159,7 @@ class blkcldList extends Component {
         <ListView
           contentInset={{bottom:70}}
           automaticallyAdjustContentInsets={false}
-          dataSource={this.state.todoSource}
+          dataSource={this.state.itemSource}
           renderRow={this.renderRow.bind(this)} />
       </View>
     );
