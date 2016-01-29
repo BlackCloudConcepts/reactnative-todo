@@ -62,3 +62,11 @@ https://github.com/benoitvallon/react-native-nw-react-calculator
 
 - routing
 http://www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript
+
+________________________________________________________________
+ISSUES
+________________________________________________________________
+
+- problems running on port 8081
+lsof -n -i4TCP:8081
+kill -9 [PID]
