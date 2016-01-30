@@ -63,6 +63,11 @@ https://github.com/benoitvallon/react-native-nw-react-calculator
 - routing
 http://www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript
 
+- add main app icon
+Upload a source image to http://makeappicon.com
+Go to Images.xcassets in the app
+Right click on the pane which includes AppIcon, select "Import...", and choose the folder that makeappicon.com generated for you
+
 ________________________________________________________________
 ISSUES
 ________________________________________________________________
