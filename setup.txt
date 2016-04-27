@@ -30,6 +30,9 @@ To run your app on Android:
 Need Xcode 7 https://github.com/facebook/react-native/issues/4794
 - This requires OSX 10.10.4
 
+More details on versions of iOS, Xcode, and OS X
+- https://en.wikipedia.org/wiki/Xcode#7.x_series
+
 - install firebase
 npm install firebase --save
 
